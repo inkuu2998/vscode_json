@@ -7,6 +7,7 @@
     // 那么，当我们在命令面板里搜索 “运行测试任务” (Run Test Task) 时，只有这个任务会被显示出来。
     // defualt is true 。 Ctrl shift B 可以直接运行
     // type 如果是明显的shell命令，如下面的删除exe文件的命令，要特别指定shell，其余的不用管
+    
     "version": "2.0.0",
     "tasks": [
         {
