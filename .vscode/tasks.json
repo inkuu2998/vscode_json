@@ -1,0 +1,121 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    // “group” 属性就是分组，我们可以通过这个属性指定这个任务被包含在哪一种分组当中。
+    // 关于分组，我们有三种选择：“build” 编译生成、“test”测试和 “none”。
+    // 在这个例子里，我们把它设置为了 “test”。
+    // 那么，当我们在命令面板里搜索 “运行测试任务” (Run Test Task) 时，只有这个任务会被显示出来。
+    // defualt is true 。 Ctrl shift B 可以直接运行
+    // type 如果是明显的shell命令，如下面的删除exe文件的命令，要特别指定shell，其余的不用管
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "process",
+            "label": "C/C++: g++.exe 生成调试文件",
+            "command": "C:\\mingw64\\bin\\g++.exe",
+            "args": [
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.exe",
+                "-fdiagnostics-color=always",
+                "-g",
+                "-Wall",
+                "-static-libgcc",
+                "-fno-elide-constructors"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "detail": "调试器生成的任务。"
+        },
+        {
+            "label": "取消构造优化 Compile",
+            "command": "g++",
+            "args": [
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.exe",
+                "-fdiagnostics-color=always",
+                "-Wall",
+                "-fno-elide-constructors"
+            ],
+            "type": "shell",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "C/C++: 运行exe",
+            "command": ".\\${fileBasenameNoExtension}.exe",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "detail": "运行exe"
+        },
+        {
+            "label": "build excute一条龙",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "取消构造优化 Compile",
+                "C/C++: 运行exe"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "取消构造优运行执行一条龙"
+        },
+        {
+            "type": "shell",
+            "label": "cmd delete  *.exe",
+            "command": "get-childitem * -include *.exe  -recurse |remove-item",
+            "group": {
+                "isDefault": true,
+                "kind": "none"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "删除exe文件"
+        }
+    ]
+}

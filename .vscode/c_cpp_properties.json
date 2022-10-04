@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "name": "Win64",//64位
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.18362.0",
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "compilerPath": "C:/mingw64/bin/g++.exe"
+           
+        }
+       
+    ],
+    "version": 4
+}

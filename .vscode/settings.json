@@ -1,0 +1,164 @@
+{
+    // 添加如下代码即可
+    "files.defaultLanguage": "cpp", // ctrl+N新建文件后默认的语言
+    "editor.formatOnType": true, // 输入分号(C/C++的语句结束标识)后自动格式化当前这一行的代码
+    "editor.suggest.snippetsPreventQuickSuggestions": false, // clangd的snippets有很多的跳转点，不用这个就必须手动触发Intellisense了
+    "editor.acceptSuggestionOnEnter": "off", // 我个人的习惯，按回车时一定是真正的换行，只有tab才会接受Intellisense
+    // "editor.snippetSuggestions": "top", // （可选）snippets显示在补全列表顶端，默认是inline
+    // 设置windows默认终端
+    "code-runner.runInTerminal": true, // 设置成false会在“输出”中输出，无法输入
+    "code-runner.executorMap": {
+        // 右键run code或者右上角三角形, 运行的命令；适用于PowerShell（Win10默认）的，文件名中有空格也可以编译运行；适用于cmd（win7默认）的，PS和bash也能用，但文件名中有空格时无法运行
+        //windows power shell   
+        "c": "cd $dir && gcc '$fileName' -o '$fileNameWithoutExt.exe' -Wall -g -O2 -static-libgcc -std=c11 && &'$dir$fileNameWithoutExt'",
+        // "cpp": "cd $dir && g++ '$fileName' -o '$fileNameWithoutExt.exe' -Wall -g -O2 -static-libgcc -std=c++17 && &'$dir$fileNameWithoutExt'"
+        "cpp": "cd $dir && g++ '$fileName' -o '$fileNameWithoutExt.exe' -Wall -g  -std=c++11 && &'$dir$fileNameWithoutExt'"
+        //windows power shell   不需要设置-fexec-charset, 如果中文有乱码-fexec-charset=GBK, 如下
+        // "c": "cd $dir && gcc '$fileName' -o '$fileNameWithoutExt.exe' -Wall -g -O2 -static-libgcc -std=c11 -fexec-charset=GBK && &'$dir$fileNameWithoutExt'",
+        // "cpp": "cd $dir && g++ '$fileName' -o '$fileNameWithoutExt.exe' -Wall -g -O2 -static-libgcc -std=c++17 -fexec-charset=GBK && &'$dir$fileNameWithoutExt'"
+        //cmd
+        // "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt.exe -Wall -g -O2 -static-libgcc -std=c11 -fexec-charset=GBK && $dir$fileNameWithoutExt",
+        // "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt.exe -Wall -g -O2 -static-libgcc -std=c++17 -fexec-charset=GBK && $dir$fileNameWithoutExt"
+    },
+    "code-runner.saveFileBeforeRun": true, // run code前保存
+    "code-runner.preserveFocus": false, // 若为false，run code后光标会聚焦到终端上。如果需要频繁输入数据可设为false
+    "code-runner.clearPreviousOutput": false, // 每次run code前清空属于code runner的终端消息，默认false
+    "code-runner.ignoreSelection": true, // 默认为false，效果是鼠标选中一块代码后可以单独执行，但C是编译型语言，不适合这样用
+    // "C_Cpp.clang_format_sortIncludes": true,
+    // "files.associations": {
+    // "array": "cpp",
+    // "atomic": "cpp",
+    // "*.tcc": "cpp",
+    // "cctype": "cpp",
+    // "clocale": "cpp",
+    // "cmath": "cpp",
+    // "cstdarg": "cpp",
+    // "cstddef": "cpp",
+    // "cstdint": "cpp",
+    // "cstdio": "cpp",
+    // "cstdlib": "cpp",
+    // "cwchar": "cpp",
+    // "cwctype": "cpp",
+    // "deque": "cpp",
+    // "unordered_map": "cpp",
+    // "vector": "cpp",
+    // "exception": "cpp",
+    // "algorithm": "cpp",
+    // "memory": "cpp",
+    // "memory_resource": "cpp",
+    // "optional": "cpp",
+    // "string": "cpp",
+    // "string_view": "cpp",
+    // "system_error": "cpp",
+    // "tuple": "cpp",
+    // "type_traits": "cpp",
+    // "utility": "cpp",
+    // "fstream": "cpp",
+    // "initializer_list": "cpp",
+    // "iosfwd": "cpp",
+    // "iostream": "cpp",
+    // "istream": "cpp",
+    // "limits": "cpp",
+    // "new": "cpp",
+    // "ostream": "cpp",
+    // "sstream": "cpp",
+    // "stdexcept": "cpp",
+    // "streambuf": "cpp",
+    // "typeinfo": "cpp",
+    // "cstring": "cpp",
+    // "map": "cpp"
+    // },
+    // "terminal.integrated.splitCwd":"inherited",
+    "terminal.integrated.splitCwd":"inherited",
+    //设置显示控制台的字体
+    "terminal.integrated.fontFamily": "Hack NF, Cascadia Mono",
+    // "terminal.integrated.fontFamily": "Cascadia Code PL",
+    //设置编辑器字体
+    "editor.fontFamily": " Consolas,monospace, Courier New, Cascadia Code PL ",
+    "editor.fontLigatures": true, //设置能够显示连字
+    // 设置调试窗口字体
+    // "debug.console.fontFamily": "Cascadia Code PL", //设置调试窗口字体
+    "debug.console.fontFamily": "Hack NF, Consolas", //设置调试窗口字体
+    // When the terminal's bell is triggered, a yellow bell icon is briefly shown.
+    "terminal.integrated.enableBell":true,
+    "terminal.integrated.bellDuration":1000,
+    // for tasks and debug
+    // 下面的已经弃用automationProfile（关于自动任务包括调试）
+    // "terminal.integrated.automationProfile.windows": {
+    //     "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+    // },
+    "files.associations": {
+        "iostream": "cpp",
+        "array": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp",
+        "unordered_map": "cpp",
+        "ostream": "cpp",
+        "*.tcc": "cpp",
+        "iosfwd": "cpp",
+        "sstream": "cpp",
+        "atomic": "cpp",
+        "cctype": "cpp",
+        "clocale": "cpp",
+        "cmath": "cpp",
+        "cstdarg": "cpp",
+        "cstddef": "cpp",
+        "cstdint": "cpp",
+        "cstdio": "cpp",
+        "cstdlib": "cpp",
+        "cstring": "cpp",
+        "ctime": "cpp",
+        "cwchar": "cpp",
+        "cwctype": "cpp",
+        "deque": "cpp",
+        "vector": "cpp",
+        "exception": "cpp",
+        "algorithm": "cpp",
+        "memory": "cpp",
+        "memory_resource": "cpp",
+        "optional": "cpp",
+        "string": "cpp",
+        "system_error": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "fstream": "cpp",
+        "istream": "cpp",
+        "limits": "cpp",
+        "new": "cpp",
+        "stdexcept": "cpp",
+        "streambuf": "cpp",
+        "typeinfo": "cpp",
+        "unordered_set": "cpp",
+        "bitset": "cpp",
+        "regex": "cpp",
+        "valarray": "cpp",
+        "charconv": "cpp",
+        "forward_list": "cpp",
+        "future": "cpp",
+        "shared_mutex": "cpp",
+        "thread": "cpp",
+        "functional": "cpp",
+        "cfenv": "cpp",
+        "chrono": "cpp",
+        "cinttypes": "cpp",
+        "codecvt": "cpp",
+        "complex": "cpp",
+        "condition_variable": "cpp",
+        "csetjmp": "cpp",
+        "csignal": "cpp",
+        "cuchar": "cpp",
+        "list": "cpp",
+        "iterator": "cpp",
+        "map": "cpp",
+        "numeric": "cpp",
+        "random": "cpp",
+        "ratio": "cpp",
+        "set": "cpp",
+        "iomanip": "cpp",
+        "mutex": "cpp",
+        "scoped_allocator": "cpp",
+        "typeindex": "cpp"
+    },
+ 
+}
